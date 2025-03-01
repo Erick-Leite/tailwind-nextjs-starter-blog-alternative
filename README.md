@@ -75,8 +75,7 @@ npx degit 'Erick-Leite/tailwind-nextjs-starter-blog-alternative'
 ```
 
 2. Personalize `siteMetadata.js` (site related information)
-3. Modify the content security policy in `next.config.js` if you want to use
-   other analytics provider or a commenting solution other than giscus.
+3. Modify the content security policy in `next.config.js` if you want to use other analytics provider or a commenting solution other than giscus.
 4. Personalize `authors/default.md` (main author)
 5. Modify `projectsData.ts`
 6. Modify `headerNavLinks.ts` to customize navigation links
