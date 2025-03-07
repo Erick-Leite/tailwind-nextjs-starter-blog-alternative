@@ -129,7 +129,7 @@ export default function Home({ posts, pagination, initialDisplayPosts = [] }: Ho
                   >
                     <Link
                       href={`/blog/${slug}`}
-                      className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 md:hover:bg-primary-500 md:hover:text-primary-100 md:dark:hover:text-primary-950 md:w-full md:items-center md:p-[0.75rem] md:text-center"
+                      className="text-primary-800 hover:text-primary-900 dark:text-primary-200 dark:hover:text-primary-100 md:hover:bg-primary-500 md:hover:text-primary-100 md:dark:hover:text-primary-950 md:w-full md:items-center md:p-[0.75rem] md:text-center"
                       aria-label={`Read more: "${title}"`}
                     >
                       Read more <span className="md:hidden">&rarr;</span>
@@ -137,10 +137,10 @@ export default function Home({ posts, pagination, initialDisplayPosts = [] }: Ho
                     {index + 1 === initialDisplayPosts.length && (
                       <Link
                         href="/blog"
-                        className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 md:hidden"
+                        className="text-primary-800 hover:text-primary-900 dark:text-primary-200 dark:hover:text-primary-100 md:hidden"
                         aria-label="All posts"
                       >
-                        All Posts &rarr;
+                        All posts &rarr;
                       </Link>
                     )}
                   </div>
@@ -160,10 +160,10 @@ export default function Home({ posts, pagination, initialDisplayPosts = [] }: Ho
           <div className="hidden justify-end text-base leading-6 font-medium md:col-start-2 md:col-end-3 md:flex xl:col-start-3 xl:col-end-4">
             <Link
               href="/blog"
-              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+              className="text-primary-800 hover:text-primary-900 dark:text-primary-200 dark:hover:text-primary-100"
               aria-label="All posts"
             >
-              All Posts &rarr;
+              All posts &rarr;
             </Link>
           </div>
         )}
