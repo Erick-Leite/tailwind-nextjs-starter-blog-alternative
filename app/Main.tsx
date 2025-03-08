@@ -129,7 +129,7 @@ export default function Home({ posts, pagination, initialDisplayPosts = [] }: Ho
                   >
                     <Link
                       href={`/blog/${slug}`}
-                      className="text-primary-800 hover:text-primary-900 dark:text-primary-200 dark:hover:text-primary-100 md:hover:bg-primary-500 md:hover:text-primary-100 md:dark:hover:text-primary-950 md:w-full md:items-center md:p-[0.75rem] md:text-center"
+                      className="text-primary-800 hover:text-primary-900 dark:text-primary-200 dark:hover:text-primary-100 md:hover:bg-primary-900 md:hover:text-primary-50 md:dark:hover:bg-primary-100 md:dark:hover:text-primary-950 md:active:text-primary-50 md:dark:active:text-primary-950 transition-colors duration-200 md:w-full md:items-center md:p-3 md:text-center md:active:bg-blue-800 md:dark:active:bg-blue-200"
                       aria-label={`Read more: "${title}"`}
                     >
                       Read more <span className="md:hidden">&rarr;</span>

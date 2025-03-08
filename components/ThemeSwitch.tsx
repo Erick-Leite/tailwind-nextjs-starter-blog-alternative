@@ -45,7 +45,7 @@ const ThemeSwitch = () => {
         <button
           aria-label={resolvedTheme === 'light' ? 'Switch to dark theme' : 'Switch to light theme'}
           type="button"
-          className="hover:text-primary-500 dark:hover:text-primary-400 rounded p-1 duration-300 hover:scale-110"
+          className="hover:text-primary-800 dark:hover:text-primary-200 rounded p-1 duration-300 hover:scale-110"
           onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
         >
           {resolvedTheme === 'light' ? <Sun /> : <Moon />}
