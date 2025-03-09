@@ -8,23 +8,22 @@ import headerNavLinks from '@/data/headerNavLinks'
 
 const MobileNav = () => {
   const [navShow, setNavShow] = useState(false)
-  const navRef = useRef(null)
+  const navRef = useRef<HTMLDivElement>(null)
 
   const onToggleNav = () => {
     setNavShow((status) => {
-      if (status) {
+      if (status && navRef.current) {
         enableBodyScroll(navRef.current)
-      } else {
-        // Prevent scrolling
-        disableBodyScroll(navRef.current)
+      } else if (!status && navRef.current) {
+        disableBodyScroll(navRef.current, { reserveScrollBarGap: true })
       }
       return !status
     })
   }
 
   useEffect(() => {
-    return clearAllBodyScrollLocks
-  })
+    return () => clearAllBodyScrollLocks()
+  }, [])
 
   return (
     <>
@@ -42,8 +41,9 @@ const MobileNav = () => {
           />
         </svg>
       </button>
-      <Transition appear show={navShow} as={Fragment} unmount={false}>
-        <Dialog as="div" onClose={onToggleNav} unmount={false}>
+
+      <Transition appear show={navShow} as={Fragment}>
+        <Dialog as="div" onClose={onToggleNav} className="relative z-50">
           <TransitionChild
             as={Fragment}
             enter="ease-out duration-300"
@@ -52,9 +52,8 @@ const MobileNav = () => {
             leave="ease-in duration-200"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
-            unmount={false}
           >
-            <div className="fixed inset-0 z-60 bg-black/25" />
+            <div className="fixed inset-0 bg-black/25" />
           </TransitionChild>
 
           <TransitionChild
@@ -65,7 +64,6 @@ const MobileNav = () => {
             leave="transition ease-in duration-200 transform"
             leaveFrom="translate-x-0 opacity-95"
             leaveTo="translate-x-full opacity-0"
-            unmount={false}
           >
             <DialogPanel className="fixed top-0 left-0 z-70 h-full w-full bg-white/95 duration-300 dark:bg-gray-950/98">
               <nav
@@ -76,7 +74,7 @@ const MobileNav = () => {
                   <Link
                     key={link.title}
                     href={link.href}
-                    className="hover:text-primary-800 dark:hover:text-primary-200 mb-4 py-2 pr-4 text-2xl font-bold tracking-widest text-gray-900 outline outline-0 dark:text-gray-100"
+                    className="hover:text-primary-800 dark:hover:text-primary-200 mb-4 py-2 pr-4 text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100"
                     onClick={onToggleNav}
                   >
                     {link.title}
