@@ -1,6 +1,8 @@
-const { withContentlayer } = require('next-contentlayer2')
+import type { NextConfig } from 'next'
+import { withContentlayer } from 'next-contentlayer2'
+import NextBundleAnalyzer from '@next/bundle-analyzer'
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
+const withBundleAnalyzer = NextBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 })
 
@@ -58,12 +60,9 @@ const output = process.env.EXPORT ? 'export' : undefined
 const basePath = process.env.BASE_PATH || undefined
 const unoptimized = process.env.UNOPTIMIZED ? true : undefined
 
-/**
- * @type {import('next/dist/next-server/server/config').NextConfig}
- **/
-module.exports = () => {
+const nextConfig: NextConfig = () => {
   const plugins = [withContentlayer, withBundleAnalyzer]
-  return plugins.reduce((acc, next) => next(acc), {
+  return plugins.reduce((acc: NextConfig, next) => next(acc), {
     output,
     basePath,
     reactStrictMode: true,
@@ -98,3 +97,5 @@ module.exports = () => {
     },
   })
 }
+
+export default nextConfig
