@@ -1,11 +1,11 @@
 import { writeFileSync, mkdirSync } from 'fs'
 import path from 'path'
 import { slug } from 'github-slugger'
-import { escape } from 'pliny/utils/htmlEscaper.js'
-import siteMetadata from '../data/siteMetadata.js'
+import { escape } from 'pliny/utils/htmlEscaper'
+import siteMetadata from '@/data/siteMetadata'
 import tagData from '../app/tag-data.json' with { type: 'json' }
-import { allBlogs } from '../.contentlayer/generated/index.mjs'
-import { sortPosts } from 'pliny/utils/contentlayer.js'
+import { allBlogs } from 'contentlayer/generated'
+import { sortPosts } from 'pliny/utils/contentlayer'
 
 const outputFolder = process.env.EXPORT ? 'out' : 'public'
 
@@ -60,4 +60,5 @@ const rss = () => {
   generateRSS(siteMetadata, allBlogs)
   console.log('RSS feed generated...')
 }
+
 export default rss
