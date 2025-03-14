@@ -9,7 +9,7 @@ export interface PaginationProps {
 }
 
 const getPaginationBasePath = (pathname: string): string => {
-  const [_, segment] = pathname.split('/')
+  const [, segment] = pathname.split('/')
 
   if (['', 'page'].includes(segment)) {
     return ''
