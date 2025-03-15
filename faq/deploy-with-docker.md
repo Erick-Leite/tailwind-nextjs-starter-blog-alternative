@@ -2,12 +2,16 @@
 
 Follow the [official Next.js repo docker build example and instructions](https://github.com/vercel/next.js/tree/canary/examples/with-docker) to deploy with docker. Copy the [`Dockerfile`](https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile) into the root of the project and modify the `next.config.js` file:
 
-```js
-// next.config.js
-module.exports = {
-  // ... rest of the configuration.
+```ts
+// next.config.ts
+import type { NextConfig } from 'next'
+
+const nextConfig: NextConfig = {
+  // ...Rest of the configuration.
   output: 'standalone',
 }
+
+export default nextConfig
 ```
 
 You can now build the docker image and run it:
