@@ -31,14 +31,14 @@ const siteMetadata: ExtendedPlinyConfig = {
   navStyle: 'dynamic',
   analytics: {
     // If you want to use an analytics provider, you need to add it to the
-    // content security policy in the `next.config.js` file.
+    // content security policy in the `next.config.ts` file.
     // Supports Plausible, Simple Analytics, Umami, Posthog, or Google Analytics.
     umamiAnalytics: {
       // An environment variable was used for this site to prevent other users from cloning the analytics ID
       umamiWebsiteId: process.env.NEXT_UMAMI_ID ?? '', // e.g.: 123e4567-e89b-12d3-a456-426614174000
       // You might also need to override the script if you are storing data in the USA - e.g.:
       // src: 'https://us.umami.is/script.js'
-      // Remember to add 'us.umami.is' in `next.config.js` as an allowed domain for the CSP
+      // Remember to add 'us.umami.is' in `next.config.ts` as an allowed domain for the CSP
     },
     // plausibleAnalytics: {
     //   plausibleDataDomain: '', // e.g.: tailwind-nextjs-starter-blog-alternative.vercel.app
@@ -59,7 +59,7 @@ const siteMetadata: ExtendedPlinyConfig = {
   },
   comments: {
     // If you want to use an analytics provider, you need to add it to the
-    // content security policy in the `next.config.js` file.
+    // content security policy in the `next.config.ts` file.
     // Select a provider and use the associated environment variables
     // https://vercel.com/docs/environment-variables
     provider: 'giscus',
