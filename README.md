@@ -33,7 +33,7 @@ I hope this template is useful for you and other developers looking for a modern
 
 - Next.js with Typescript
 - [Contentlayer](https://www.contentlayer.dev/) to manage content logic
-- Easy styling customization with [Tailwind 3.0](https://tailwindcss.com/blog/tailwindcss-v3) and primary color attribute
+- Easy styling customization with [Tailwind v4](https://tailwindcss.com/blog/tailwindcss-v4) and primary color attribute
 - [MDX - write JSX in markdown documents!](https://mdxjs.com/)
 - Mobile-friendly view
 - Light and dark theme
@@ -74,8 +74,8 @@ I hope this template is useful for you and other developers looking for a modern
 npx degit 'Erick-Leite/tailwind-nextjs-starter-blog-alternative'
 ```
 
-2. Personalize `siteMetadata.js` (site related information)
-3. Modify the content security policy in `next.config.js` if you want to use other analytics provider or a commenting solution other than giscus.
+2. Personalize `siteMetadata.ts` (site related information)
+3. Modify the content security policy in `next.config.ts` if you want to use other analytics provider or a commenting solution other than giscus.
 4. Personalize `authors/default.md` (main author)
 5. Modify `projectsData.ts`
 6. Modify `headerNavLinks.ts` to customize navigation links
@@ -108,13 +108,13 @@ Edit the layout in `app` or content in `data`. With live reloading, the pages au
 
 ## Extend / Customize
 
-`data/siteMetadata.js` - contains most of the site related information which should be modified for a user's need.
+`data/siteMetadata.ts` - contains most of the site related information which should be modified for a user's need.
 
 `data/authors/default.md` - default author information (required). Additional authors can be added as files in `data/authors`.
 
-`data/projectsData.js` - data used to generate styled card on the projects page.
+`data/projectsData.ts` - data used to generate styled card on the projects page.
 
-`data/headerNavLinks.js` - navigation links.
+`data/headerNavLinks.ts` - navigation links.
 
 `data/logo.svg` - replace with your own logo.
 
@@ -128,7 +128,7 @@ Edit the layout in `app` or content in `data`. With live reloading, the pages au
 
 `contentlayer.config.ts` - configuration for Contentlayer, including definition of content sources and MDX plugins used. See [Contentlayer documentation](https://www.contentlayer.dev/docs/getting-started) for more information.
 
-`components/MDXComponents.js` - pass your own JSX code or React component by specifying it over here. You can then use them directly in the `.mdx` or `.md` file. By default, a custom link, `next/image` component, table of contents component and Newsletter form are passed down. Note that the components should be default exported to avoid [existing issues with Next.js](https://github.com/vercel/next.js/issues/51593).
+`components/MDXComponents.ts` - pass your own JSX code or React component by specifying it over here. You can then use them directly in the `.mdx` or `.md` file. By default, a custom link, `next/image` component, table of contents component and Newsletter form are passed down. Note that the components should be default exported to avoid [existing issues with Next.js](https://github.com/vercel/next.js/issues/51593).
 
 `layouts` - main templates used in pages:
 
@@ -137,7 +137,7 @@ Edit the layout in `app` or content in `data`. With live reloading, the pages au
 
 `app` - pages to route to. Read the [Next.js documentation](https://nextjs.org/docs/app) for more information.
 
-`next.config.js` - configuration related to Next.js. You need to adapt the Content Security Policy if you want to load scripts, images etc. from other domains.
+`next.config.ts` - configuration related to Next.js. You need to adapt the Content Security Policy if you want to load scripts, images etc. from other domains.
 
 ## Post
 
@@ -241,7 +241,7 @@ Then, deploy the generated `out` folder or run `npx serve out` it locally.
 
 Consider removing the following features that cannot be used in a static build:
 
-1. Comment out `headers()` from `next.config.js`.
+1. Comment out `headers()` from `next.config.ts`.
 2. Remove `api` folder and components which call the server-side function such as the Newsletter component. Not technically required and the site will build successfully, but the APIs cannot be used as they are server-side functions.
 
 ## Frequently Asked Questions
