@@ -7,9 +7,13 @@
  * https://github.com/PrismJS/prism-themes
  */
 
+pre:has(code[class*='language-']) {
+  @apply bg-primary-50 dark:bg-primary-950/50;
+}
+
 /* Code title styles */
 .remark-code-title {
-  @apply rounded-xs bg-gray-700 px-5 py-3 font-mono text-sm font-bold text-gray-200 dark:bg-gray-800;
+  @apply bg-primary-800 dark:bg-primary-200 text-primary-50 dark:text-primary-950 rounded-xs px-5 py-3 font-mono text-sm font-bold;
 }
 
 .remark-code-title + div > pre {
@@ -22,90 +26,93 @@
 }
 
 .code-line {
-  @apply -mx-4 block border-l-4 border-transparent pr-4 pl-4;
+  @apply -mx-4 block border-l-4 border-transparent px-4 text-emerald-800 dark:text-emerald-200;
 }
 
 .code-line.inserted {
-  @apply bg-green-500/20;
+  @apply bg-green-800/20 dark:bg-green-200/20;
 }
 
 .code-line.deleted {
-  @apply bg-red-500/20;
+  @apply bg-red-800/20 dark:bg-red-200/20;
 }
 
 .highlight-line {
-  @apply border-primary-500 -mx-4 border-l-4 bg-gray-700/50;
+  @apply border-primary-800 dark:border-primary-200 -mx-4 border-l-4 bg-gray-800/20 dark:bg-gray-200/20;
+  text-shadow:
+    0.063rem 0.063rem 0.125rem oklch(0.91 0.096 180.426),
+    0 0 1rem oklch(0.901 0.058 230.902),
+    0 0 0.2rem oklch(0.901 0.058 230.902);
+}
+
+.dark .highlight-line {
+  text-shadow:
+    0.063rem 0.063rem 0.125rem oklch(0.437 0.078 188.216),
+    0 0 1rem oklch(0.443 0.11 240.79),
+    0 0 0.2rem oklch(0.443 0.11 240.79);
 }
 
 .line-number::before {
-  @apply mr-4 -ml-2 inline-block w-4 text-right text-gray-400;
+  @apply text-primary-800 mr-4 -ml-2 inline-block w-4 text-right;
   content: attr(line);
 }
 
-/* Token styles */
-/**
- * MIT License
- * Copyright (c) 2018 Sarah Drasner
- * Sarah Drasner's[@sdras] Night Owl
- * Ported by Sara vieria [@SaraVieira]
- * Added by Souvik Mandal [@SimpleIndian]
- */
+.dark .line-number:before {
+  @apply text-primary-200;
+}
+
 .token.comment,
 .token.prolog,
 .token.cdata {
-  color: rgb(99, 119, 119);
-  font-style: italic;
+  @apply text-gray-800 italic dark:text-gray-200;
 }
 
 .token.punctuation {
-  color: rgb(199, 146, 234);
+  @apply text-violet-800 dark:text-violet-200;
 }
 
 .namespace {
-  color: rgb(178, 204, 214);
+  @apply text-blue-800 dark:text-blue-200;
 }
 
 .token.deleted {
-  color: rgba(239, 83, 80, 0.56);
-  font-style: italic;
+  @apply text-red-800/80 italic dark:text-red-200/80;
 }
 
 .token.symbol,
 .token.property {
-  color: rgb(128, 203, 196);
+  @apply text-primary-800 dark:text-primary-200;
 }
 
 .token.tag,
 .token.operator,
 .token.keyword {
-  color: rgb(127, 219, 202);
+  @apply text-primary-800 dark:text-primary-200;
 }
 
 .token.boolean {
-  color: rgb(255, 88, 116);
+  @apply text-pink-800 dark:text-pink-200;
 }
 
 .token.number {
-  color: rgb(247, 140, 108);
+  @apply text-orange-800 dark:text-orange-200;
 }
 
 .token.constant,
 .token.function,
 .token.builtin,
 .token.char {
-  color: rgb(130, 170, 255);
+  @apply text-blue-800 dark:text-blue-200;
 }
 
 .token.selector,
 .token.doctype {
-  color: rgb(199, 146, 234);
-  font-style: italic;
+  @apply text-violet-800 italic dark:text-violet-200;
 }
 
 .token.attr-name,
 .token.inserted {
-  color: rgb(173, 219, 103);
-  font-style: italic;
+  @apply text-green-800 italic dark:text-green-200;
 }
 
 .token.string,
@@ -113,30 +120,30 @@
 .token.entity,
 .language-css .token.string,
 .style .token.string {
-  color: rgb(173, 219, 103);
+  @apply text-green-800 dark:text-green-200;
 }
 
 .token.class-name,
 .token.atrule,
 .token.attr-value {
-  color: rgb(255, 203, 139);
+  @apply text-lime-800 dark:text-lime-200;
 }
 
 .token.regex,
 .token.important,
 .token.variable {
-  color: rgb(214, 222, 235);
+  @apply text-slate-800 dark:text-slate-200;
 }
 
 .token.important,
 .token.bold {
-  font-weight: bold;
+  @apply font-bold;
 }
 
 .token.italic {
-  font-style: italic;
+  @apply italic;
 }
 
 .token.table {
-  display: inline;
+  @apply inline;
 }
