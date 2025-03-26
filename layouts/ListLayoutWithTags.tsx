@@ -79,7 +79,7 @@ export default function ListLayoutWithTags({
             </div>
           </div>
           <div>
-            <ul>
+            <ul className="mb-5">
               {displayPosts.map((post) => {
                 const { path, date, coverImage, title, summary, tags } = post
                 const { url, alt, width, height, blog } = coverImage ?? {}
