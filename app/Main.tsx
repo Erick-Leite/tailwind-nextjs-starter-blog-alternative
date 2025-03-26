@@ -47,7 +47,7 @@ export default function Home({ posts, pagination, initialDisplayPosts = [] }: Ho
 
             return (
               <li key={path} className="py-12 last:pb-0 md:mt-12 md:py-0">
-                <article className="md:border-opacity-60 grid md:grid-cols-7 md:overflow-hidden md:rounded-md md:border-2 md:border-gray-200 xl:grid-cols-8 md:dark:border-gray-700">
+                <article className="grid md:grid-cols-7 md:overflow-hidden md:rounded-md md:border-2 md:border-gray-200 xl:grid-cols-8 md:dark:border-gray-700">
                   <dl
                     className={clsx(
                       'md:col-end-8 md:row-start-1 md:grid md:items-center md:p-3 xl:border-r-2 xl:border-inherit',
@@ -169,7 +169,7 @@ export default function Home({ posts, pagination, initialDisplayPosts = [] }: Ho
         )}
       </div>
       {siteMetadata.newsletter?.provider && (
-        <div className="mt-10 flex items-center justify-center print:hidden">
+        <div className="newsletter-form mt-10 flex items-center justify-center print:hidden">
           <NewsletterForm />
         </div>
       )}
