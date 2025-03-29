@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import useDetectScroll from '@smakss/react-scroll-direction'
 import { useMediaQuery } from '@hooks'
 import { motion, useAnimate } from 'motion/react'
@@ -29,7 +29,7 @@ const Header = () => {
     isDynamic: false,
     isFloating: false,
   })
-  const [navDimensions, setNavDimensions] = useState({
+  const navDimensionsRef = useRef({
     width: '100%',
     floatingWidth: '96%',
     floatingTop: '1vw',
@@ -54,7 +54,7 @@ const Header = () => {
     if (NAV_DYNAMIC) {
       updateNavStateOnScroll()
     }
-  }, [scrollPosition.top, scrollDir, updateNavStateOnScroll])
+  }, [updateNavStateOnScroll])
 
   const updateNavDimensions = useCallback(() => {
     let width = '100%'
@@ -71,19 +71,26 @@ const Header = () => {
       floatingTop = '0.48rem'
     }
 
-    setNavDimensions({ width, floatingWidth, floatingTop })
-    animate(scope.current, { width: navState.isDynamic ? floatingWidth : width }, { duration: 0 })
-  }, [isMd, isXl, animate, scope, navState.isDynamic])
+    navDimensionsRef.current = { width, floatingWidth, floatingTop }
+    animate(
+      scope.current,
+      {
+        top: navState.isFloating ? floatingTop : undefined,
+        width: navState.isDynamic ? floatingWidth : width,
+      },
+      { duration: 0 }
+    )
+  }, [isMd, isXl, animate, scope, navState.isFloating, navState.isDynamic])
 
   useEffect(() => {
     if (NAV_DYNAMIC) {
       updateNavDimensions()
     }
-  }, [isMd, isXl, updateNavDimensions])
+  }, [updateNavDimensions])
 
-  useEffect(() => {
+  const handleNavAnimation = useCallback(() => {
     const { isVisible, isDynamic, isFloating } = navState
-    const { width, floatingWidth, floatingTop } = navDimensions
+    const { width, floatingWidth, floatingTop } = navDimensionsRef.current
     const duration = 0.5
 
     const MUST_SHOW_NAV = isVisible && !isDynamic && !isFloating
@@ -98,7 +105,13 @@ const Header = () => {
     } else if (MUST_SHOW_FLOATING_NAV) {
       animate(scope.current, { top: floatingTop }, { duration })
     }
-  }, [navState, navDimensions, animate, scope])
+  }, [navState, navDimensionsRef, animate, scope])
+
+  useEffect(() => {
+    if (NAV_DYNAMIC) {
+      handleNavAnimation()
+    }
+  }, [handleNavAnimation])
 
   return (
     <header className="h-[6rem] print:hidden">
@@ -116,9 +129,7 @@ const Header = () => {
             <div className="mr-3">
               <Logo />
             </div>
-            <div className="hidden h-6 text-2xl font-semibold sm:block">
-              {siteMetadata.headerTitle}
-            </div>
+            <div className="hidden text-2xl font-semibold sm:block">{siteMetadata.headerTitle}</div>
           </div>
         </Link>
         <div className="flex items-center space-x-4 leading-5 sm:space-x-6">
